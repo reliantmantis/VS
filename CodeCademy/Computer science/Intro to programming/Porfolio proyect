@@ -1,0 +1,120 @@
+
+#Proyect is going to be about selection of materials
+from collections import Counter
+
+#Creation of class
+class Polymer:
+    def __init__(self, name, density, tensile_strength, melting_point, price):
+        self.name = name
+        self.density= density
+        self.tensile_strength= tensile_strength
+        self.melting_point= melting_point
+        self.price= price
+        
+    def __str__(self):
+        return f"Polymer: {self.name}"
+pass
+
+#Library of materials
+
+#Ranges for density (kg/m3): "low"(895-1330),"medium"(1331-1756),"high"(1757-2200)
+#Ranges for tensile_strength (MPa): "low"(17-50), "medium"(51-84), "high"(85,117)
+#Ranges for melting_point (ºC): "low"(75-180), "medium"(181-265), "high"(266,322)
+#Ranges for price (EUR/Kg): "low"(1-29), "medium"(30-58), "high"(59-87)
+
+a= Polymer("Polyvinylchloride", "medium", "low", "medium", "low")
+b= Polymer("Polyurethane", "low", "low", "low", "low")
+c= Polymer("PTFE", "low", "low", "high", "low")
+d= Polymer("PS", "low", "low", "medium", "low")
+e= Polymer("PP", "low", "low", "low", "low")
+f= Polymer("POM", "medium", "high", "low", "low")
+g= Polymer("PMMA", "low", "medium", "medium", "low")
+h= Polymer("PET", "medium", "medium", "medium", "low")
+i= Polymer("PE", "low", "low", "low", "low")
+j= Polymer("PEEK", "low", "high", "high", "high")
+k= Polymer("UP", "low", "medium", "medium", "low")
+l= Polymer("PC", "low", "medium", "high", "low")
+m= Polymer("PA", "low", "medium", "medium", "low")
+n= Polymer("PF", "low", "medium", "high", "low")
+o= Polymer("Ionomer", "low", "low", "low", "low")
+p= Polymer("Epoxies", "low", "medium", "medium", "low")
+q= Polymer("Celulose Polymer", "low", "low", "medium", "low")
+r= Polymer("ABS", "low", "low", "medium", "low")
+
+polymers=[a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r]
+
+#Presentation
+print("Welcome to SelectPolymer, the best webside to find the ideal polymer for your proyect \nWhats your name?")
+name = input()
+print(f"Nice to meet you, {name} \nThis program is really easy to work with! \nI will be asking you some questions about the properties you would like for your material. At the end I will tell you what is the ideal one for you. I hope my info will be usefull for you :).")
+
+#Questions
+#Density
+print("Let`s beging with a very general property, density. Please introduce a value using dotes as decimal separation. Rember that the density range for polymers usually goes from 880 kg/cm3 up to 2200 kg/cm3")
+density=float(input())
+
+if density <= 1329:
+    my_density= "low"
+elif density > 1329 and density <= 1756:
+    my_density= "medium"
+else:
+    my_density= "high"
+
+#tensile strength
+print("What`s the tensile strength that you would desire for your polymer? Please introduce a value using dotes as decimal separation. Rember that the tensile strength range for polymers usually goes from 17 MPa up to 117 MPa")
+tensile_strength= float(input())  
+
+if tensile_strength <= 49:
+    my_tensile_strength= "low"
+elif density > 49 and tensile_strength <= 84:
+    my_tensile_strength= "medium"
+else:
+    my_tensile_strength= "high"
+
+#melting point
+print("It`s crucial in order to put in service a polymer to know it`s melting point. Please introduce a value using dotes as decimal separation. Rember that the melting point range for polymers usually goes from 75 ºC up to 322 ºC")
+melting_point= float(input())    
+
+if melting_point <= 179:
+    my_melting_point= "low"
+elif melting_point > 179 and melting_point <= 264:
+    my_melting_point= "medium"
+else:
+    my_melting_point= "high"  
+
+#price
+print("A characteristic that limits the use of one polymer or another is the price. Please introduce a value using dotes as decimal separation. Rember that the price range for polymers usually goes from 1.25 EUR/Kg up to 87 EUR/Kg")
+price= float(input())
+
+if price <= 28:
+    my_price= "low"
+elif price > 28 and price<= 57:
+    my_price= "medium"
+else:
+    my_price= "high"
+
+#my_polymer
+my_polymer= Polymer("Undefined", my_density, my_tensile_strength, my_melting_point, my_price)
+
+def comparation(object, list_objects):
+    same = []
+    solution=[]
+    for n in list_objects:
+        if n.density == object.density:
+            same.append(n.name)
+        if n.tensile_strength == object.tensile_strength:
+            same.append(n.name)
+        if n.melting_point == object.melting_point:
+            same.append(n.name)
+        if n.price == object.price:
+            same.append(n.name)
+    print(same)
+    possible_soliutions= Counter(same)
+    print(possible_soliutions)
+    for key, value in possible_soliutions.items():  
+        if  value == 4:
+            solution.append(key)
+    
+    return print("Some possible Polymers that can be used based on the properties given are: "+ ",".join(solution))
+
+print(comparation(my_polymer, polymers))            
