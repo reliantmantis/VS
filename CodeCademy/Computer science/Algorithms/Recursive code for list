@@ -1,0 +1,14 @@
+# En caso de que una lista contenga un mix de otraas listas y strings, lo que hace es "eliminar" las listas que estan dentyro y sus valores los incluye como strings sueltos
+
+
+def flatten(my_list):
+  result = []
+  for element in my_list:
+    if isinstance(element, list):
+      print("List found!")
+      flat_list = flatten(element)
+      result += flat_list
+    else:
+      result.append(element)
+  return result
+
