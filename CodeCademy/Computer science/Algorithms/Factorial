@@ -1,0 +1,20 @@
+# Usando interación
+def factorial(n):  
+  if n < 0:    
+    return ValueError("Inputs 0 or greater only") 
+  if n <= 1:    
+    return 1  
+  return n * factorial(n - 1)
+
+#usando recursive code
+def factorial(n):
+  if n < 0:
+    return ValueError("Inputs 0 or greater only")
+  elif n <= 1:
+    return 1
+  else:
+    result = 1
+    while n != 1:
+      result *= n
+      n -= 1
+    return result
