@@ -1,0 +1,29 @@
+import LinkedList
+
+# Definition for singly-linked list node.
+# class ListNode:
+#     def __init__(self, value, next_node=None):
+#         self.value = value
+#         self.next_node = next_node
+
+# define remove_node() here
+def remove_node(head, i):
+    if i < 0:
+        return head
+    if head is None:
+        return None
+    if i == 0:
+        return head.next_node
+
+    head.next_node = remove_node(head.next_node, i - 1)
+    return head
+
+# We take care of the edge case where i <= 0 because it’s impossible to remove a node of negative index. It’s good practice to address edge cases like this in your program to ensure it always functions as intended.
+
+# We then define the two base cases:
+
+# The first base case involves checking if head is None. If this is True, we know that we have reached the end of the linked list so we simply return a None object.
+# The second base case involves checking if i == 0 and removing head from the linked list. The simplest way to remove head is by skipping over it and returning head.next_node instead.
+# In order to iterate the linked list, we assign head.next_node to the recursive call. remove_node() is recursively called with arguments head.next_node and i - 1, which moves the input closer to the first and second base cases simultaneously.
+
+# The last step is to return head. After all recursive calls on the call stack resolve, head will be the first node of the linked list with the ith node removed.
