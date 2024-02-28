@@ -1,0 +1,23 @@
+def move_to_end(lst, val):
+  result = []
+  if len(lst) == 0:
+    return []
+      
+  if lst[0] == val:
+    result += move_to_end(lst[1:], val)
+    result.append(lst[0])
+  else:
+    result.append(lst[0])
+    result += move_to_end(lst[1:], val)
+
+  return result
+
+# We first create an empty list variable called result - we will use this variable to store the output list.
+
+# The base case checks if lst is empty by if len(lst) == 0. If it is empty, we return an empty list [].
+
+# Next, we proceed to the recursive step. If the first item matches val, we need to extract the first item from lst and append it to the end of result. This is achieved by recursively calling result += move_to_end(lst[1:], val) first, and then appending the item using result.append(lst[0]). We use lst[1:] as the argument here in order to bring the input closer to the base case.
+
+# In the else section, where the first item does NOT match val, we need to extract the first item from lst and append it to the beginning of result. This is achieved by appending the item using result.append(lst[0]), and then recursively calling result += move_to_end(lst[1:], val) second.
+
+# Finally, the function returns result. After recursive calls have been returned from the call stack, result will be a copy of lst with every instance of val moved to the end of the list.
