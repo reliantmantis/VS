@@ -1,0 +1,36 @@
+def merge_sort(items):
+  if len(items) <= 1:
+    return items
+
+  middle_index = len(items) // 2
+  left_split = items[:middle_index]
+  right_split = items[middle_index:]
+
+  left_sorted = merge_sort(left_split)
+  right_sorted = merge_sort(right_split)
+
+  return merge(left_sorted, right_sorted)
+
+def merge(left, right):
+  result = []
+
+  while (left and right):
+    if left[0] < right[0]:
+      result.append(left[0])
+      left.pop(0)
+    else:
+      result.append(right[0])
+      right.pop(0)
+
+  if left:
+    result += left
+  if right:
+    result += right
+
+  return result
+
+# We’ve written our merge sort! The whole sort takes up two functions:
+
+# merge_sort() which is called recursively breaks down an input list to smaller, more manageable pieces. merge() which is a helper function built to help combine those broken-down lists into ordered combination lists.
+
+# merge_sort() continues to break down an input list until it only has one element and then it joins that with other single element lists to create sorted 2-element lists. Then it combines 2-element sorted lists into 4-element sorted lists. It continues that way until all the items of the lists are sorted!
