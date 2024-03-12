@@ -9,3 +9,6 @@ Interview prep: ...
 
 Acabar curso estimadamente por la primera semana de Mayo
 
+TEMAS QUE NO HE LLEGADO A ENTENDER O COMPRENDER DEL TODO:
+
+-Understand dynamic programming and memoization and apply those concepts in Python. Este tema necesita sin dudas que le des un repaso por tu cuenta, marcar cuando lo hayas hecho 
