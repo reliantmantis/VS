@@ -15,7 +15,7 @@ class TreeNode:
                      if child is not child_node]
 
   def traverse(self):
-    # moves through each node referenced from self downwards
+    # mo  ves through each node referenced from self downwards
     nodes_to_visit = [self]
     while len(nodes_to_visit) > 0:
       current_node = nodes_to_visit.pop()
