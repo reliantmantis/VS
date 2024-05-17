@@ -1,0 +1,38 @@
+from Graph_class import *
+from airport_departures import airport_graph
+
+
+def ronautica():
+    greet()
+    get_start_airport()
+    get_end_airport()
+    route()
+
+def greet():
+    print("Hello, welcome to RONAUTICA!!!")
+    print("The aim of this code is to find the best route from your airport departure to your destination")
+    
+def get_start_airport():
+    start_point_code = input("Please, in CAPITAL LETTERS, name the code of your departure ariport. Example: Barcelona`s code is \"BCN\" ")
+    if start_point_code in airport_graph:
+        start_airport = start_point_code
+        return start_airport
+    else:
+        print("Sorry, the aiport you entered is bad written or not existance, plese try again!!!")
+        get_start_airport()
+
+def get_end_airport():
+    end_point_code = input("Please, in CAPITAL LETTERS, name the code of your arrival ariport. Example: Madrid`s code is \"MAD\" ")
+    if end_point_code in airport_graph:
+        end_airport = end_point_code
+        return end_airport
+    else:
+        print("Sorry, the aiport you entered is bad written or not existance, plese try again!!!")
+        get_end_airport()
+
+def route(start_airport, end_airport):
+    route = find_path(airport_graph, start_airport, end_airport)
+    return route
+
+
+print(ronautica())
